@@ -16,7 +16,7 @@ steps:
     displayName: "Install Node.js"
   - task: Npm@1
     inputs:
-      command: 'install'
+      command: "install"
   - task: Npm@1
     inputs:
       command: "custom"
@@ -29,7 +29,8 @@ steps:
 
   - task: Npm@1
     inputs:
-      command: 'ci'
+      command: "custom"
+      customCommand: "run build"
 
   - task: PublishBuildArtifacts@1
     inputs:

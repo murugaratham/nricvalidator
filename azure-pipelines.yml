@@ -22,8 +22,8 @@ steps:
 
   - task: PublishCodeCoverageResults@1
     inputs:
-      codeCoverageTool: "Cobertura"
-      summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml"
+      codeCoverageTool: 'Cobertura'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-final.json'
 
   - task: Npm@1
     displayName: "build"

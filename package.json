@@ -1,7 +1,7 @@
 {
-  "name": "validid",
+  "name": "idvalidator",
   "description": "SG identification no. validators",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "devDependencies": {
@@ -17,7 +17,8 @@
   },
   "scripts": {
     "build": "rimraf dist && rollup --config rollup.config.js && rollup --config rollup.config_es.js",
-    "test": "tsc --noEmit && jest --verbose --watchAll"
+    "test": "tsc --noEmit && jest --coverage --env=jsdom",
+    "test:watch": "tsc --noEmit && jest --verbose --watchAll"
   },
   "dependencies": {
     "@rollup/plugin-typescript": "^8.2.3"

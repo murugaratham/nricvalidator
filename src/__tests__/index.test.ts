@@ -72,6 +72,24 @@ describe("Validate G identification no", () => {
     expect(result).toBe(false);
   });
 });
+describe("Validate M identification no", () => {
+  it("Valid M id should return true", () => {
+    //arrange
+    const arrangedId = "M1234567K";
+    //act
+    const result = validate(arrangedId);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("Invalid M id should return false", () => {
+    //arrange
+    const arrangedId = "M1234567Z";
+    //act
+    const result = validate(arrangedId);
+    //assert
+    expect(result).toBe(false);
+  });
+});
 describe("Validate invalid identification no", () => {
   it("blank id should return false", () => {
     //arrange
@@ -89,19 +107,17 @@ describe("Validate invalid identification no", () => {
     //assert
     expect(result).toBe(false);
   });
-});
-describe("Validate M identification no", () => {
-  it("Valid M id should return true", () => {
+  it("very short id should return false", () => {
     //arrange
-    const arrangedId = "M1234567K";
+    const arrangedId = "zz1";
     //act
     const result = validate(arrangedId);
     //assert
-    expect(result).toBe(true);
+    expect(result).toBe(false);
   });
-  it("Invalid M id should return false", () => {
+  it("unknown prefix should return false", () => {
     //arrange
-    const arrangedId = "M1234567Z";
+    const arrangedId = "K3000514G";
     //act
     const result = validate(arrangedId);
     //assert

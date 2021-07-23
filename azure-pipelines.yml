@@ -1,8 +1,3 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
-
 trigger:
   - master
 
@@ -14,25 +9,30 @@ steps:
     inputs:
       versionSpec: "14.15.0"
     displayName: "Install Node.js"
+
   - task: Npm@1
+    displayName: "install"
     inputs:
-      command: "install"
+      command: 'ci'
   - task: Npm@1
+    displayName: "test"
     inputs:
       command: "custom"
       customCommand: "run test"
 
   - task: PublishCodeCoverageResults@1
     inputs:
-      codeCoverageTool: "Cobertura"
-      summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml"
+      codeCoverageTool: 'Cobertura'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage-final.json'
 
   - task: Npm@1
+    displayName: "build"
     inputs:
       command: "custom"
       customCommand: "run build"
 
   - task: PublishBuildArtifacts@1
+    displayName: "publish"
     inputs:
       PathtoPublish: "dist"
       ArtifactName: "idvalidator"

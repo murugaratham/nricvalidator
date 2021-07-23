@@ -14,7 +14,9 @@ steps:
     inputs:
       versionSpec: "14.15.0"
     displayName: "Install Node.js"
-
+  - task: Npm@1
+    inputs:
+      command: 'install'
   - task: Npm@1
     inputs:
       command: "custom"
@@ -25,10 +27,9 @@ steps:
       codeCoverageTool: "Cobertura"
       summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml"
 
-  - script: |
-      npm install
-      npm run build
-    displayName: "npm install and build"
+  - task: Npm@1
+    inputs:
+      command: 'ci'
 
   - task: PublishBuildArtifacts@1
     inputs:

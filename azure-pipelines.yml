@@ -23,7 +23,7 @@ steps:
   - task: PublishCodeCoverageResults@1
     inputs:
       codeCoverageTool: 'Cobertura'
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-final.json'
+      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage-final.json'
 
   - task: Npm@1
     displayName: "build"

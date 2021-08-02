@@ -1,6 +1,6 @@
-# IDValidator
+# Nricvalidator
 
-Takes a string input and validates it using calculated checksum
+Takes a string input and validates it using calculated checksum based on http://www.ngiam.net/NRIC/NRIC_numbers.pdf
 
 ## WIP
 
@@ -10,7 +10,7 @@ Read more on [Rollup](https://javascript.plainenglish.io/rollup-commonjs-umd-c6d
 
 ```html
 <!-- script.html -->
-<script src="dist/js/idvalidator.js"></script>
+<script src="dist/js/nricvalidator.js"></script>
 <script>
   console.log(validate("S1234567H"));
 </script>
@@ -19,11 +19,11 @@ Read more on [Rollup](https://javascript.plainenglish.io/rollup-commonjs-umd-c6d
 ### ES Modules
 
 ```bash
-npm i idvalidator
+npm i nricvalidator
 ```
 
 ```jsx
-import { validate } from "idvalidator";
+import { validate } from "nricvalidator";
 
 const isValidId = validate("S1234567H");
 ```

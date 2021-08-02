@@ -6,7 +6,7 @@ export default {
   input: "src/index.ts",
   output: {
     dir: "dist/es",
-    name: "idvalidator",
+    name: "nricvalidator",
     format: "es",
     sourcemap: true,
   },

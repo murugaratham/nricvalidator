@@ -13,7 +13,7 @@ steps:
   - task: Npm@1
     displayName: "install"
     inputs:
-      command: 'ci'
+      command: "ci"
   - task: Npm@1
     displayName: "test"
     inputs:
@@ -22,8 +22,8 @@ steps:
 
   - task: PublishCodeCoverageResults@1
     inputs:
-      codeCoverageTool: 'Cobertura'
-      summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml'
+      codeCoverageTool: "Cobertura"
+      summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/cobertura-coverage.xml"
 
   - task: Npm@1
     displayName: "build"
@@ -35,5 +35,5 @@ steps:
     displayName: "publish"
     inputs:
       PathtoPublish: "dist"
-      ArtifactName: "idvalidator"
+      ArtifactName: "nricvalidator"
       publishLocation: "Container"

@@ -4,8 +4,8 @@ import typescript from "@rollup/plugin-typescript";
 export default {
   input: "src/index.ts",
   output: {
-    file: "dist/js/idvalidator.js",
-    name: "idvalidator",
+    file: "dist/js/nricvalidator.js",
+    name: "nricvalidator",
     format: "iife",
     sourcemap: true,
   },

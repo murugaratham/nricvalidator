@@ -1,7 +1,6 @@
 /**
  *
  * @param idToCheck {string} identification number to check
- * @param allowXYIds {boolean} allow temporary identification number used by some institution
  * @returns {boolean} validation results
  */
 export const validate = (idToCheck: string): boolean => {

@@ -1,6 +1,6 @@
 {
-  "name": "idvalidator",
-  "description": "SG identification no. validators",
+  "name": "nricvalidator",
+  "description": "Singapore identification no. validator",
   "version": "1.0.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",

@@ -1,9 +1,12 @@
 {
-  "name": "nricvalidator",
+  "name": "sgidvalidator",
   "description": "Singapore identification no. validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "homepage": "https://github.com/murugaratham/nricvalidator",
+  "bugs": "https://github.com/murugaratham/nricvalidator/issues",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "jest": "^27.0.6",

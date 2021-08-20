@@ -29,11 +29,15 @@ export const validate = (idToCheck: string): boolean => {
 
   // checksum tables
   const ST = ["J", "Z", "I", "H", "G", "F", "E", "D", "C", "B", "A"];
-  const FGM = ["X", "W", "U", "T", "R", "Q", "P", "N", "M", "L", "K"];
+  const FG = ["X", "W", "U", "T", "R", "Q", "P", "N", "M", "L", "K"];
+  const M = ["X", "W", "U", "T", "R", "Q", "P", "N", "J", "L", "K"];
 
   if (startChar === "S" || startChar === "T") {
     return endChar === ST[remainder];
   } else if (startChar === "F" || startChar === "G" || startChar === "M") {
-    return endChar === FGM[remainder];
-  } else return false;
+    return endChar === FG[remainder];
+  } else if (startChar === "M") {
+    return endChar === M[remainder];
+  }
+  return false;
 };

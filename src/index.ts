@@ -34,7 +34,7 @@ export const validate = (idToCheck: string): boolean => {
 
   if (startChar === "S" || startChar === "T") {
     return endChar === ST[remainder];
-  } else if (startChar === "F" || startChar === "G" || startChar === "M") {
+  } else if (startChar === "F" || startChar === "G") {
     return endChar === FG[remainder];
   } else if (startChar === "M") {
     return endChar === M[remainder];

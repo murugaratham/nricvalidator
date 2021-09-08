@@ -18,7 +18,7 @@ export default {
       rootDir: "src",
     }),
     generatePackageJson({
-      outputFolder: "dist",
+      outputFolder: "dist/es",
       baseContents: (pkg) => {
         pkg.main = "es/index.js";
         pkg.scripts = undefined;

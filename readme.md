@@ -23,7 +23,7 @@ npm i nricvalidator
 ```
 
 ```jsx
-import { validate } from "nricvalidator";
+import { validate } from "sgidvalidator";
 
-const isValidId = validate("S1234567H");
+const isValid = validate("S1234567H");
 ```

@@ -1,5 +1,7 @@
 # Nricvalidator
 
+[Demo](https://nricvalidator.vercel.app/)
+
 Takes a string input and validates it using calculated checksum based on http://www.ngiam.net/NRIC/NRIC_numbers.pdf
 
 ## WIP

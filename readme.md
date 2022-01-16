@@ -10,9 +10,17 @@ Read more on [Rollup](https://javascript.plainenglish.io/rollup-commonjs-umd-c6d
 
 ```html
 <!-- script.html -->
-<script src="dist/js/nricvalidator.js"></script>
+...
+<body>
+  <input type="text" maxlength="9" pattern=".{9}" onkeyup="checknric(this)" required />
+</body>
+...
+<script src="https://unpkg.com/sgidvalidator@1.0.7/dist/js/nricvalidator.js"></script>
 <script>
-  console.log(validate("S1234567H"));
+  function checknric(element) {
+    var valid = nricvalidator.validate(element.value);
+    if (!valid) alert("invalid!");
+  }
 </script>
 ```
 

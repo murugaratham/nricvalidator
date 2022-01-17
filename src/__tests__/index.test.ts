@@ -1,4 +1,4 @@
-import { validate } from "../index";
+import { generate, validate } from "../index";
 
 describe("Validate S identification no", () => {
   it("Valid S id should return true", () => {
@@ -122,5 +122,79 @@ describe("Validate invalid identification no", () => {
     const result = validate(arrangedId);
     //assert
     expect(result).toBe(false);
+  });
+});
+describe("Generate nric", () => {
+  it("with no input", () => {
+    //arrange
+    const arrangedId = "";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with partial valid nric beginning with S", () => {
+    //arrange
+    const arrangedId = "S";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with partial valid nric beginning with T", () => {
+    //arrange
+    const arrangedId = "T";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with partial valid nric beginning with F", () => {
+    //arrange
+    const arrangedId = "F";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with partial valid nric beginning with M", () => {
+    //arrange
+    const arrangedId = "M1";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with partial valid nric up till last char (S1234567)", () => {
+    //arrange
+    const arrangedId = "S1234567";
+    //act
+    const generatedNric = generate(arrangedId);
+    const result = validate(generatedNric);
+    //assert
+    expect(result).toBe(true);
+  });
+  it("with fully provided nric to throw", () => {
+    //arrange
+    const arrangedId = "S1234567D";
+    //act
+
+    const result = () => generate(arrangedId);
+    //assert
+    expect(result).toThrow();
+  });
+  it("with invalid prefix to throw", () => {
+    //arrange
+    const arrangedId = "Z";
+    //act
+
+    const result = () => generate(arrangedId);
+    //assert
+    expect(result).toThrow();
   });
 });

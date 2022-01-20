@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nric Validator</title>
-    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.4/dist/simple-notify.min.css" />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body class="align">
     <a class="gh-ribbon red right" href="https://github.com/murugaratham/nricvalidator" target="_blank"
@@ -15,15 +15,47 @@
     <h3>Singapore Nric validator</h3>
     <form>
       <div class="form__field">
-        <input type="text" class="form__input" maxlength="9" onkeyup="checknric(this)" required />
+        <select class="form__select" id="nric_prefix">
+          <option value="S">S</option>
+          <option value="T">T</option>
+          <option value="F">F</option>
+          <option value="G">G</option>
+          <option value="M">M</option>
+        </select>
+        <input type="text" class="form__input" id="nric_text" maxlength="9" onkeyup="checknric(this)" required />
         <span class="icon"></span>
       </div>
     </form>
-    <div>
-      <button class="bootstrap-btn" onclick="generatenric()">Generate</button>
-      <button class="bootstrap-btn" onclick="completenric()">Complete</button>
-      <button class="bootstrap-btn" onclick="copynric()">Copy</button>
+    <div class="flex-grid">
+      <span>
+        <a href="#" class="btn green" onclick="generatenric()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Generate
+        </a>
+      </span>
+      <span>
+        <a href="#" class="btn red" onclick="completenric()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Complete
+        </a>
+      </span>
+      <span>
+        <a href="#" class="btn blue" onclick="copynric()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Copy
+        </a>
+      </span>
     </div>
+
     <p>
       *Hint* you can enter partial ids and let it complete the remaining characters for you, try M1234567 and click on
       complete
@@ -32,31 +64,41 @@
   <script src="../dist/js/nricvalidator.js"></script>
   <script>
     function copynric() {
-      navigator.clipboard.writeText(document.querySelector("input").value);
+      navigator.clipboard.writeText(
+        document.querySelector("#nric_prefix").value + document.querySelector("#nric_text").value,
+      );
       new Notify({
         status: "success",
         title: "Copied!",
         autoclose: true,
-        autotimeout: 600,
+        type: 3,
+        autotimeout: 1000,
         effect: "slide",
         position: "bottom right",
       });
     }
     function checknric(element) {
-      var valid = nricvalidator.validate(element.value);
+      var valid = nricvalidator.validate(document.querySelector("#nric_prefix").value + element.value);
       if (valid) element.setCustomValidity("");
       else element.setCustomValidity("Invalid NRIC");
     }
     function generatenric() {
-      document.querySelector("input").value = nricvalidator.generate();
+      document.querySelector("input").value = nricvalidator
+        .generate(document.querySelector("#nric_prefix").value)
+        .substring(1, 9);
       checknric(document.querySelector("input"));
     }
     function completenric() {
       try {
-        if (document.querySelector("input").value.length === 9) {
+        if (
+          document.querySelector("#nric_prefix").value.length + document.querySelector("#nric_text").value.length ===
+          9
+        ) {
           return;
         } else {
-          var nric = nricvalidator.generate(document.querySelector("input").value);
+          var nric = nricvalidator
+            .generate(document.querySelector("#nric_prefix").value + document.querySelector("input").value)
+            .substring(1, 9);
           document.querySelector("input").value = nric;
           checknric(document.querySelector("input"));
         }

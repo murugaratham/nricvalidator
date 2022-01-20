@@ -21,6 +21,7 @@ export const validate = (idToCheck: string): boolean => {
 };
 
 export const generate = (partialSeedId?: string) => {
+  console.log(partialSeedId);
   const legalStartingCharacters = ["S", "T", "F", "G", "M"];
   if (partialSeedId) {
     const hasLegalStartingCharacter = legalStartingCharacters.some((legalStartingCharacter) =>
@@ -43,7 +44,7 @@ export const generate = (partialSeedId?: string) => {
   }
 
   const { checksum } = tryGetChecksum(startChar + generatedId.join(""));
-
+  console.log(`${startChar}${generatedId.join("")}${checksum}`);
   return `${startChar}${generatedId.join("")}${checksum}`.toUpperCase();
 };
 /**

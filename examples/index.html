@@ -64,6 +64,11 @@
   <!-- <script src="../dist/js/nricvalidator.js"></script> -->
   <script src="https://unpkg.com/sgidvalidator/dist/js/nricvalidator.js"></script>
   <script>
+    (function (l) {
+      var i,
+        s = { touchend: function () {} };
+      for (i in s) l.addEventListener(i, s);
+    })(document); // sticky hover fix in iOS
     function copynric() {
       navigator.clipboard.writeText(
         document.querySelector("#nric_prefix").value + document.querySelector("#nric_text").value,
